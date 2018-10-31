@@ -1,0 +1,33 @@
+<div class="flex-container">
+  <button *ngIf="canAddTag && hasPermissions" mat-mini-fab (click)="addTag()">
+    <mat-icon class="mdi-plus"></mat-icon>
+  </button>
+
+  <cs-search
+    [(ngModel)]="query"
+    (ngModelChange)="updateFilterResults()"
+  ></cs-search>
+
+</div>
+
+<mat-checkbox
+  name="showSystemTags"
+  [(ngModel)]="showSystemTags"
+  (change)="onShowSystemTagsChange()"
+>
+  {{ 'TAGS.SHOW_SYSTEM_TAGS' | translate }}
+</mat-checkbox>
+
+
+<cs-tag-category
+  *ngFor="let category of visibleCategories"
+  [category]="category"
+  [tags]="tags"
+  [query]="query"
+  [hasPermissions]="hasPermissions"
+  (onTagAdd)="addTag($event)"
+  (onTagEdit)="editTag($event)"
+  (onTagDelete)="removeTag($event)"
+></cs-tag-category>
+
+<cs-no-results *ngIf="!visibleCategories?.length"></cs-no-results>

@@ -1,0 +1,8 @@
+<cs-template-page
+  [query]="query$ | async"
+  [groupings]="selectedGroupings$ | async"
+  [templates]="templates$ | async"
+  [fetching]="isLoading$ | async"
+
+  (onTemplateDelete)="onTemplateDelete($event)"
+></cs-template-page>

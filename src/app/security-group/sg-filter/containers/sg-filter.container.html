@@ -1,0 +1,8 @@
+<cs-sg-filter
+  [filters]="filters$ | async"
+  [accounts]="accounts$ | async"
+  (queryChange)="onQueryChange($event)"
+  (viewModeChange)="onViewModeChange($event)"
+  (onAccountsChange)="onAccountsChange($event)"
+  (onOrphanChange)="onOrphanChange($event)"
+></cs-sg-filter>

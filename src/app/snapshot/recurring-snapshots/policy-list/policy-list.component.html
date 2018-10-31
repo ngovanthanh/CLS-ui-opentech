@@ -1,0 +1,46 @@
+<mat-table [dataSource]="policyViews">
+
+  <ng-container matColumnDef="time">
+    <mat-header-cell *matHeaderCellDef> {{ 'SNAPSHOT_POLICIES.TIME' | translate }} </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.timeToken | translate:{ value: element.timeValue } }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="period">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.periodToken | translate: { value: element.periodValue | translate } }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="timeZone">
+    <mat-header-cell *matHeaderCellDef> {{ 'SNAPSHOT_POLICIES.TIME_ZONE' | translate }} </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.timeZone }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="keep">
+    <mat-header-cell *matHeaderCellDef> {{ 'SNAPSHOT_POLICIES.KEEP' | translate }} </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.keep }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        (click)="deletePolicy(element)"
+        [matTooltip]="'COMMON.DELETE' | translate"
+      >
+        <mat-icon class="mdi-delete"></mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: columnsToDisplay"
+    (click)="handlePolicyRowClick(row)"
+  ></mat-row>
+
+</mat-table>

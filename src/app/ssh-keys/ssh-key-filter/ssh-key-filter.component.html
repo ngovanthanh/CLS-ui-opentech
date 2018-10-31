@@ -1,0 +1,29 @@
+<div class="filter-wrapper">
+  <mat-form-field *ngIf="accounts.length > 1">
+    <mat-select
+      multiple="true"
+      [placeholder]="'SSH_KEYS.FILTERS.SELECT_ACCOUNTS' | translate"
+      [ngModel]="selectedAccountIds"
+      (selectionChange)="onAccountsChange.emit($event.value)"
+    >
+      <mat-option
+        *ngFor="let account of accounts"
+        [value]="account.id"
+      >{{ account.fullDomain }}{{ account.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field  *ngIf="groupings.length">
+    <cs-draggable-select
+      multiple="true"
+      [placeholder]="'SSH_KEYS.FILTERS.GROUP_BY' | translate"
+      [ngModel]="selectedGroupings"
+      [dragItems]="groupings"
+      (ngModelChange)="onGroupingsChange.emit($event)"
+    >
+      <mat-option *ngFor="let g of groupings" [value]="g">
+        {{ g.label | translate }}
+      </mat-option>
+    </cs-draggable-select>
+  </mat-form-field>
+</div>

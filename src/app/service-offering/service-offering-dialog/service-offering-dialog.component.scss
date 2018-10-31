@@ -1,0 +1,22 @@
+.service-offering-selector {
+  padding-top: 10px;
+  display: block;
+}
+
+.warning {
+  color: red;
+}
+
+.message {
+  text-align: right;
+  margin-top: 10px;
+}
+
+:host .mat-dialog-content {
+  overflow: hidden;
+}
+
+.mat-dialog-actions {
+  flex-direction: column;
+  text-align: right;
+}

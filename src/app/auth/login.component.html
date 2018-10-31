@@ -1,0 +1,67 @@
+<div class="flex-container" *ngIf="!loading">
+  <img class="logo" src="img/cloudstack_logo.png">
+  <mat-card class="login">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+      <div class="mat-dialog-content">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            name="username"
+            [(ngModel)]="username"
+            [placeholder]="'AUTH.USERNAME' | translate"
+            autofocus
+            required
+            #usernameControl="ngModel"
+          >
+          <mat-error *ngIf="usernameControl.hasError('required')">
+            {{'AUTH.USERNAME_REQUIRED' | translate}}
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            [placeholder]="'AUTH.PASSWORD' | translate"
+            required
+            #passwordControl="ngModel"
+          >
+          <mat-error *ngIf="passwordControl.hasError('required')">
+            {{'AUTH.PASSWORD_REQUIRED' | translate}}
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field *ngIf="showDomain" class="full-width-input">
+          <input
+            matInput
+            name="domain"
+            [(ngModel)]="domain"
+            [placeholder]="'AUTH.DOMAIN' | translate"
+          >
+        </mat-form-field>
+      </div>
+      <div class="mat-dialog-actions">
+        <button
+          mat-button
+          color="primary"
+          type="submit"
+          [disabled]="(passwordControl.invalid && !passwordControl.pristine) || (usernameControl.invalid && !usernameControl.pristine)"
+        >
+          {{ 'AUTH.LOGIN' | translate }}
+        </button>
+        <button
+          mat-icon-button
+          class="options-button"
+          type="button"
+          [matTooltip]="(showDomain ? 'AUTH.HIDE_ADVANCED' : 'AUTH.SHOW_ADVANCED') | translate"
+          matTooltipPosition="above"
+          (click)="toggleDomain()"
+        >
+          <mat-icon [class.domains-visible]="showDomain" class="mdi-settings"></mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

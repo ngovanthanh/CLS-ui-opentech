@@ -1,0 +1,17 @@
+:host {
+  display: table;
+  width: 100%;
+}
+
+.rule-row {
+  border-bottom: none !important;
+
+  .mat-cell {
+    padding: 5px 0;
+    font-size: 13px;
+  }
+}
+
+.delete-button-cell {
+  text-align: right !important;
+}

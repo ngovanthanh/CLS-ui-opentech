@@ -1,0 +1,9 @@
+<cs-color-picker
+  *ngIf="colorList"
+  class="color-picker"
+  [colors]="colorList"
+  [ngModel]="color"
+  [disabled]="colorUpdateInProgress"
+  [hasColorField]="false"
+  (change)="changeColor($event)"
+></cs-color-picker>

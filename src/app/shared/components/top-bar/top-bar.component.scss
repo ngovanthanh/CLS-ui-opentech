@@ -1,0 +1,37 @@
+@import '../../../../style/_variables';
+
+.top-bar {
+  position: relative !important;
+  display: flex;
+  background-color: white;
+  border-bottom: 1px solid #dedede;
+}
+
+.top-bar-content {
+  //display: flex;
+  //flex-direction: column;
+  //align-content: center;
+  //align-items: flex-start;
+  //flex: 1 1 100%;
+  width: 100%;
+  min-height: 70px;
+}
+
+.top-bar-notifications {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  margin: 19px;
+  transition: right 300ms;
+}
+
+.drawer-button {
+  height: 20px;
+  padding: 20px 0 20px 20px;
+  cursor: pointer;
+}
+
+.sidebar-open {
+  right: $sidebar-width;
+  z-index: 6;
+}
